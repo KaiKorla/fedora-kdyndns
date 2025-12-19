@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 Name:               kdyndns
-Version:            1.0.0~beta.0
+Version:            1.0.0~beta.1
 Release:            1%{?dist}
 %global upstream_tag %{lua:local v=rpm.expand("%{version}");print((v:gsub("~","-")))}
 Summary:            A minimalistic DynDNS service written in Rust.
@@ -54,9 +54,6 @@ install -Dm0644 %{SOURCE3} %{buildroot}%{_unitdir}/kdyndns.service
 %{_unitdir}/kdyndns.service
 
 %{_bindir}/kdyndns
-
-%pre
-%sysusers_create %{_sysusersdir}/kdyndns.conf
 
 %post
 %tmpfiles_create %{_tmpfilesdir}/kdyndns.conf
