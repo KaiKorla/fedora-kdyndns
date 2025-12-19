@@ -13,7 +13,7 @@ Environment="RUST_LOG=info"
 RuntimeDirectory=kdyndns
 RuntimeDirectoryMode=0750
 
-ExecStart=/usr/local/bin/kdyndns
+ExecStart=/usr/bin/kdyndns
 ExecReload=/bin/kill -SIGUSR1 $MAINPID
 
 # journald-kompatibel
