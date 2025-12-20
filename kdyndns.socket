@@ -1,0 +1,11 @@
+[Unit]
+Description=KDynDNS Socket
+
+[Socket]
+ListenStream=/run/kdyndns/kdyndns.sock
+SocketUser=kdyndns
+SocketGroup=kdyndns
+SocketMode=0660
+
+[Install]
+WantedBy=sockets.target
