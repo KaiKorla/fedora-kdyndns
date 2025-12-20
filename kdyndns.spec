@@ -2,7 +2,7 @@
 
 Name:               kdyndns
 Version:            2.0.0
-Release:            1%{?dist}
+Release:            2%{?dist}
 %global upstream_tag %{lua:local v=rpm.expand("%{version}");print((v:gsub("~","-")))}
 Summary:            A minimalistic DynDNS service written in Rust.
 
@@ -11,8 +11,7 @@ License:            MIT
 URL:                https://github.com/KaiKorla/KDynDNS
 Source0:            %{url}/archive/refs/tags/%{upstream_tag}.tar.gz
 Source1:            kdyndns-sysusers.conf
-Source2:            kdyndns-tmpfiles.conf
-Source3:            kdyndns.service
+Source2:            kdyndns.service
 
 ExclusiveArch:      x86_64 aarch64
 
@@ -39,8 +38,7 @@ A minimalistic DynDNS service written in Rust.
 install -d %{buildroot}%{_sysconfdir}/kdyndns
 install -m0644 config/config.toml %{buildroot}%{_sysconfdir}/kdyndns/config.toml
 install -Dm0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/kdyndns.conf
-install -Dm0644 %{SOURCE2} %{buildroot}%{_tmpfilesdir}/kdyndns.conf
-install -Dm0644 %{SOURCE3} %{buildroot}%{_unitdir}/kdyndns.service
+install -Dm0644 %{SOURCE2} %{buildroot}%{_unitdir}/kdyndns.service
 
 %files
 %license LICENSE
@@ -50,13 +48,11 @@ install -Dm0644 %{SOURCE3} %{buildroot}%{_unitdir}/kdyndns.service
 %config(noreplace) %{_sysconfdir}/kdyndns/config.toml
 
 %{_sysusersdir}/kdyndns.conf
-%{_tmpfilesdir}/kdyndns.conf
 %{_unitdir}/kdyndns.service
 
 %{_bindir}/kdyndns
 
 %post
-%tmpfiles_create %{_tmpfilesdir}/kdyndns.conf
 %systemd_post kdyndns.service
 
 %preun

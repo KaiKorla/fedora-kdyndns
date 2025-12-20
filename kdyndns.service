@@ -11,7 +11,7 @@ Environment="KDYNDNS_CONFIG=/etc/kdyndns/config.toml"
 Environment="RUST_LOG=info"
 
 RuntimeDirectory=kdyndns
-RuntimeDirectoryMode=0750
+RuntimeDirectoryMode=0770
 
 ExecStart=/usr/bin/kdyndns
 ExecReload=/bin/kill -SIGUSR1 $MAINPID
