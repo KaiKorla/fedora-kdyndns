@@ -1,8 +1,8 @@
 %global debug_package %{nil}
 
 Name:               kdyndns
-Version:            3.0.0
-Release:            2%{?dist}
+Version:            4.0.2
+Release:            1%{?dist}
 %global upstream_tag %{lua:local v=rpm.expand("%{version}");print((v:gsub("~","-")))}
 Summary:            A minimalistic DynDNS service written in Rust.
 
