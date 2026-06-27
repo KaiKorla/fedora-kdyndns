@@ -1,14 +1,14 @@
 %global debug_package %{nil}
 
 Name:               kdyndns
-Version:            6.0.0
+Version:            6.0.1
 Release:            1%{?dist}
 %global upstream_tag %{lua:local v=rpm.expand("%{version}");print((v:gsub("~","-")))}
 Summary:            A minimalistic DynDNS service written in Rust.
 
 License:            MIT
 
-URL:                https://github.com/KaiKorla/KDynDNS
+URL:                https://github.com/KaiKorla/kdyndns
 Source0:            %{url}/archive/refs/tags/%{upstream_tag}.tar.gz
 Source1:            kdyndns-sysusers.conf
 Source2:            kdyndns.service
@@ -28,7 +28,7 @@ Suggests: nginx
 A minimalistic DynDNS service written in Rust.
 
 %prep
-%autosetup -n KDynDNS-%{upstream_tag}
+%autosetup -n kdyndns-%{upstream_tag}
 %cargo_prep -v vendor
 
 %build
